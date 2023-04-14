@@ -8,6 +8,7 @@ import Example4 from "./ObjectInState/Example4/Example4";
 import Gallary from "./Props/Gallery";
 import RenderingList from "./RenderingList/RenderingList";
 import StateUse from "./useStateUse/StateUse";
+import Demo from "./Demos/Demo";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -74,6 +75,7 @@ function App() {
       <Example2 />
       <Example3 />
       <Example4 /> */}
+      <Demo />
     </>
   );
 }
