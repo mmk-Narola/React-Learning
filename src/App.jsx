@@ -9,6 +9,7 @@ import Gallary from "./Props/Gallery";
 import RenderingList from "./RenderingList/RenderingList";
 import StateUse from "./useStateUse/StateUse";
 import Demo from "./Demos/Demo";
+import ArrExample1 from "./ArrayInState/ArrExample1";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -42,7 +43,7 @@ function App() {
         return <Example1 />;
         break;
       case "Array in State":
-        return <PackingList />;
+        return <ArrExample1 />;
         break;
 
       default:
@@ -75,7 +76,7 @@ function App() {
       <Example2 />
       <Example3 />
       <Example4 /> */}
-      <Demo />
+      {/* <Demo /> */}
     </>
   );
 }
