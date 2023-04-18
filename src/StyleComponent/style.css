@@ -1,0 +1,11 @@
+.demo {
+  color: lightslategray;
+}
+
+.demo2 {
+  font-size: 30px;
+}
+
+.demo3::after {
+  content: "This is style Component";
+}

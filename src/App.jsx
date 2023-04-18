@@ -10,7 +10,11 @@ import RenderingList from "./RenderingList/RenderingList";
 import StateUse from "./useStateUse/StateUse";
 import Demo from "./Demos/Demo";
 import ArrExample1 from "./ArrayInState/ArrExample1";
-
+import StyleApp from "./StyleComponent/StyleApp";
+import { Routes, Route, Link, NavLink } from "react-router-dom";
+import Home from "./Routing/Home";
+import Contact from "./Routing/Contact";
+import About from "./Routing/About";
 function App() {
   const [value, setValue] = useState("Props");
 
@@ -21,6 +25,7 @@ function App() {
     "useState",
     "Object in State",
     "Array in State",
+    "Style Component",
   ];
 
   const handleTab = () => {};
@@ -46,6 +51,10 @@ function App() {
         return <ArrExample1 />;
         break;
 
+      case "Style Component":
+        return <StyleApp isValue={true} />;
+        break;
+
       default:
         break;
     }
@@ -53,6 +62,7 @@ function App() {
 
   return (
     <>
+      <h2>Technical Suneja Video React - 19</h2>
       {btnLabel.map((label) => {
         return (
           <button
@@ -65,9 +75,7 @@ function App() {
           </button>
         );
       })}
-
       {switchTab()}
-
       {/* <Gallary />
       <PackingList />
       <RenderingList />
@@ -77,6 +85,18 @@ function App() {
       <Example3 />
       <Example4 /> */}
       {/* <Demo /> */}
+      <NavLink to="/home">
+        <h2>NavLink</h2>
+      </NavLink>
+      <Link to="/home">Home</Link>
+      {"  "}
+      <Link to="/contact">Contact</Link> {"  "}
+      <Link to="/about">About</Link>{" "}
+      <Routes>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+      </Routes>
     </>
   );
 }
