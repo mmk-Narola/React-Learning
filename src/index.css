@@ -79,3 +79,8 @@ li {
 .active {
   color: red;
 }
+
+.product {
+  list-style: none;
+  border-bottom: 2px solid black;
+}
