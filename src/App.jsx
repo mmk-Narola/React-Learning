@@ -8,6 +8,9 @@ import StateUse from "./useStateUse/StateUse";
 import ArrExample1 from "./ArrayInState/ArrExample1";
 import StyleApp from "./StyleComponent/StyleApp";
 import RoutingDemo from "./Routing/RoutingDemo";
+import UseEffect from "./useEffect/UseEffect";
+import ApiCall from "./ApiCalling/ApiCall";
+
 function App() {
   const [value, setValue] = useState("Props");
 
@@ -20,6 +23,8 @@ function App() {
     "Array in State",
     "Style Component",
     "Routing",
+    "useEffect",
+    "Api Calling using Axios",
   ];
 
   const switchTab = () => {
@@ -47,6 +52,10 @@ function App() {
         break;
       case "Routing":
         return <RoutingDemo />;
+      case "useEffect":
+        return <UseEffect />;
+      case "Api Calling using Axios":
+        return <ApiCall />;
       default:
         break;
     }
