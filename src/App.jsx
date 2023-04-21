@@ -10,6 +10,9 @@ import StyleApp from "./StyleComponent/StyleApp";
 import RoutingDemo from "./Routing/RoutingDemo";
 import UseEffect from "./useEffect/UseEffect";
 import ApiCall from "./ApiCalling/ApiCall";
+import Parent from "./ChildToParent/Parent";
+import Parents from "./ParenToChild/Parents";
+import Forms from "./Form/Forms";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -25,6 +28,9 @@ function App() {
     "Routing",
     "useEffect",
     "Api Calling using Axios",
+    "Parent to Child",
+    "Child to Parent",
+    "Form in React",
   ];
 
   const switchTab = () => {
@@ -56,6 +62,12 @@ function App() {
         return <UseEffect />;
       case "Api Calling using Axios":
         return <ApiCall />;
+      case "Parent to Child":
+        return <Parents />;
+      case "Child to Parent":
+        return <Parent />;
+      case "Form in React":
+        return <Forms />;
       default:
         break;
     }
