@@ -13,6 +13,8 @@ import ApiCall from "./ApiCalling/ApiCall";
 import Parent from "./ChildToParent/Parent";
 import Parents from "./ParenToChild/Parents";
 import Forms from "./Form/Forms";
+import FilterTable from "./Search&Check/FilterTable.";
+import CrudLocalstorage from "./CrudWithLocalStorage/CrudLocalstorage";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -31,6 +33,19 @@ function App() {
     "Parent to Child",
     "Child to Parent",
     "Form in React",
+    "Search&CheckBox",
+    "CRUD With LocalStorage",
+  ];
+
+  const PRODUCTS = [
+    { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
+    { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
+    { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
+    { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
+    { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
+    { category: "Vegetables", price: "$1", stocked: true, name: "Peas" },
+    { category: "Juice", price: "$5", stocked: true, name: "Banana" },
+    { category: "Juice", price: "$3", stocked: false, name: "Mango  " },
   ];
 
   const switchTab = () => {
@@ -68,6 +83,10 @@ function App() {
         return <Parent />;
       case "Form in React":
         return <Forms />;
+      case "Search&CheckBox":
+        return <FilterTable products={PRODUCTS} />;
+      case "CRUD With LocalStorage":
+        return <CrudLocalstorage />;
       default:
         break;
     }

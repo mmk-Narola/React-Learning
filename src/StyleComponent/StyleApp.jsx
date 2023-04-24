@@ -3,7 +3,7 @@ const StyleApp = (props) => {
   let className = props.isValue ? "demo" : "demo2";
 
   const heading = {
-    color: "darkblue    ",
+    color: "darkblue",
     fontSize: "40px",
   };
 
