@@ -15,6 +15,8 @@ import Parents from "./ParenToChild/Parents";
 import Forms from "./Form/Forms";
 import FilterTable from "./Search&Check/FilterTable.";
 import CrudLocalstorage from "./CrudWithLocalStorage/CrudLocalstorage";
+import Hoc from "./HigherOrderComponent/Hoc";
+import AxiosCrud from "./ApiCalling/AxiosCrud";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -34,7 +36,8 @@ function App() {
     "Child to Parent",
     "Form in React",
     "Search&CheckBox",
-    "CRUD With LocalStorage",
+    "CRUD",
+    "Higher Order Component",
   ];
 
   const PRODUCTS = [
@@ -85,8 +88,15 @@ function App() {
         return <Forms />;
       case "Search&CheckBox":
         return <FilterTable products={PRODUCTS} />;
-      case "CRUD With LocalStorage":
-        return <CrudLocalstorage />;
+      case "CRUD":
+        return (
+          <>
+            <CrudLocalstorage />
+            <AxiosCrud />
+          </>
+        );
+      case "Higher Order Component":
+        return <Hoc hello={"Hello"} />;
       default:
         break;
     }

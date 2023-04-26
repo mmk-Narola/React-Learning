@@ -1,3 +1,14 @@
 {
-  "CRUD": []
+  "CRUD": [
+    {
+      "name": "MMK",
+      "email": "kshirsagarm773@gmail.com",
+      "id": 1
+    },
+    {
+      "name": "MMK",
+      "email": "ykp@gmail.com",
+      "id": 2
+    }
+  ]
 }

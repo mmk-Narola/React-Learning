@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState, useEffect, useRef } from "react";
 
-const CrudLocalstorage = () => {
+const AxiosCrud = () => {
   const [userDetails, setDetails] = useState({
     name: "",
     email: "",
@@ -8,13 +9,17 @@ const CrudLocalstorage = () => {
   const [listUser, setListUser] = useState([]);
   const [editId, setEditId] = useState("");
   const [flag, setFlag] = useState(false);
+  //   const [call, setCall] = useState(true);
+  const call = useRef(true);
+
+  const retriveDetails = async () => {
+    const response = await axios.get("http://localhost:3000/CRUD");
+    return response.data;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const date = new Date();
-    const uId = date.getTime() + Math.floor(Math.random() * 10) + 1;
     let objData = {
-      id: uId,
       [name]: value,
     };
     setDetails({
@@ -23,34 +28,36 @@ const CrudLocalstorage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     // localStorage set and GetItem and Add List
-    const getTodo = JSON.parse(localStorage.getItem("userList"));
-    const list = getTodo !== null ? getTodo : [];
-    list.push(userDetails);
-    localStorage.setItem("userList", JSON.stringify(list));
-    setListUser(list);
+    // const getTodo = JSON.parse(localStorage.getItem("userList"));
+    // const list = getTodo !== null ? getTodo : [];
+    // list.push(userDetails);
+    // localStorage.setItem("userList", JSON.stringify(list));
+
+    const request = {
+      ...userDetails,
+    };
+    const response = await axios.post("http://localhost:3000/CRUD", request);
+
+    setListUser([...listUser, response.data]);
     setDetails({
       name: "",
       email: "",
     });
     setFlag(false);
+    // setCall(false);
   };
 
-  const handleDelete = (id) => {
-    console.log(id);
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:3000/CRUD/${id}`);
     const filterList = listUser.filter((list) => list.id !== id);
-    console.log(filterList);
-    localStorage.setItem("userList", JSON.stringify(filterList));
     setListUser(filterList);
   };
 
   const handleEdit = (id) => {
-    console.log(id);
     const findUser = listUser.find((item) => item.id === id) || null;
-    console.log(findUser);
     if (findUser) {
       setDetails((prev) => ({
         ...prev,
@@ -61,11 +68,9 @@ const CrudLocalstorage = () => {
     setFlag(true);
   };
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     let data = JSON.parse(localStorage.getItem("userList"));
-
-    console.log(editId);
     setListUser(
       listUser.map((editList) => {
         return editList.id === editId
@@ -74,7 +79,7 @@ const CrudLocalstorage = () => {
       })
     );
 
-    const updateValue = data.map((newValue) => {
+    const updateValue = listUser.map((newValue) => {
       if (newValue.id === editId) {
         return {
           ...newValue,
@@ -84,8 +89,13 @@ const CrudLocalstorage = () => {
       }
       return newValue;
     });
-    localStorage.setItem("userList", JSON.stringify(updateValue));
-    console.log(userDetails);
+    const updateList = await axios.put(
+      `http://localhost:3000/CRUD/${editId}`,
+      updateValue
+    );
+
+    // localStorage.setItem("userList", JSON.stringify(updateValue));
+    // console.log(userDetails);
 
     // localStorage.setItem("userList", JSON.stringify(filterList));
 
@@ -106,15 +116,23 @@ const CrudLocalstorage = () => {
   };
 
   useEffect(() => {
-    const getTodo = JSON.parse(localStorage.getItem("userList"));
-    console.log(getTodo);
-    setListUser(getTodo || []);
+    const getContact = async () => {
+      const allContact = await retriveDetails();
+      if (allContact) {
+        setListUser(allContact);
+      }
+    };
+    if (call.current) {
+      getContact();
+      call.current = false;
+    }
+    return () => {};
   }, []);
-
+  console.log(call.current);
   return (
     <>
       <div className="profile">
-        <h2>CRUD with LocalStorage</h2>
+        <h2>CRUD with Axios Api</h2>
         <form>
           {/* Add Operation */}
           <input
@@ -138,12 +156,13 @@ const CrudLocalstorage = () => {
           >
             {flag ? "Update" : "Add"}
           </button>
-        </form>
+        </form>{" "}
         <hr />
         <div>
           <table>
             <thead>
               <tr>
+                <th>Sr No</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Action</th>
@@ -154,6 +173,7 @@ const CrudLocalstorage = () => {
                 listUser.map((list) => {
                   return (
                     <tr key={list.id}>
+                      <td>{list.id}</td>
                       <td>{list.name}</td>
                       <td>{list.email}</td>
                       <td>
@@ -169,7 +189,7 @@ const CrudLocalstorage = () => {
                 })
               ) : (
                 <tr>
-                  <td colSpan={3}>User List Not Available</td>
+                  <td colSpan={3}>Data Not available</td>
                 </tr>
               )}
             </tbody>
@@ -180,4 +200,4 @@ const CrudLocalstorage = () => {
   );
 };
 
-export default CrudLocalstorage;
+export default AxiosCrud;
