@@ -6,6 +6,7 @@ import ArrExample5 from "./ArrExample5";
 import ArrExample6 from "./ArrExample6";
 import Challenges1 from "./Challenges/Challenges1";
 import Challenges2 from "./Challenges/Challenges2";
+import InterViewTodo from "./InterviewTodo";
 
 let initialArtists = [
   { id: 0, name: "Marta Colvin Andrade" },
@@ -67,6 +68,7 @@ const ArrExample1 = () => {
         </ul>
       </div>
       <div className="profile">
+        <InterViewTodo />
         <Todos />
       </div>
       <div className="profile">

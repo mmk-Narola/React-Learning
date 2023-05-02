@@ -17,6 +17,11 @@ import FilterTable from "./Search&Check/FilterTable.";
 import CrudLocalstorage from "./CrudWithLocalStorage/CrudLocalstorage";
 import Hoc from "./HigherOrderComponent/Hoc";
 import AxiosCrud from "./ApiCalling/AxiosCrud";
+import Context from "./Context/Context";
+import UseReducers from "./UseReducers/UseReducers";
+import UseReducers2 from "./UseReducers/UseReducers2";
+import UseReducers3 from "./UseReducers/UseReducers3";
+import UseReducers4 from "./UseReducers/UseReducers4";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -38,6 +43,8 @@ function App() {
     "Search&CheckBox",
     "CRUD",
     "Higher Order Component",
+    "Context",
+    "UseReducer",
   ];
 
   const PRODUCTS = [
@@ -97,6 +104,18 @@ function App() {
         );
       case "Higher Order Component":
         return <Hoc hello={"Hello"} />;
+      case "Context":
+        return <Context />;
+      case "UseReducer":
+        return (
+          <>
+            <h2>Codevaluation video-22</h2>
+            <UseReducers />
+            <UseReducers2 />
+            <UseReducers3 />
+            <UseReducers4 />
+          </>
+        );
       default:
         break;
     }
