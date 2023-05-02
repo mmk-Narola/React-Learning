@@ -22,6 +22,11 @@ import UseReducers from "./UseReducers/UseReducers";
 import UseReducers2 from "./UseReducers/UseReducers2";
 import UseReducers3 from "./UseReducers/UseReducers3";
 import UseReducers4 from "./UseReducers/UseReducers4";
+import MainFile from "./ReducerUseContext/MainFile";
+import UseReducers5 from "./UseReducers/UseReducers5";
+import FetchApiUseReducer from "./UseReducers/FetchApiUseReducer";
+import UseRef from "./UseRef/UseRef";
+import CustomHook from "./CustomHook/CustomHook";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -45,6 +50,9 @@ function App() {
     "Higher Order Component",
     "Context",
     "UseReducer",
+    "useReducer with useContext",
+    "UseRef",
+    "Custome Hook",
   ];
 
   const PRODUCTS = [
@@ -114,8 +122,16 @@ function App() {
             <UseReducers2 />
             <UseReducers3 />
             <UseReducers4 />
+            <UseReducers5 />
+            <FetchApiUseReducer />
           </>
         );
+      case "useReducer with useContext":
+        return <MainFile />;
+      case "UseRef":
+        return <UseRef />;
+      case "Custome Hook":
+        return <CustomHook />;
       default:
         break;
     }
