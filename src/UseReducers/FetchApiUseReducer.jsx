@@ -33,7 +33,7 @@ const FetchApiUseReducer = () => {
 
   useEffect(() => {
     axios
-      .get(`https://jsonplaceholder.typicode.com/posts/5`)
+      .get(`https://jsonplaceholder.typicode.com/posts/1`)
       .then((response) => {
         dispatch({
           type: "FETCH_SUCCESS",

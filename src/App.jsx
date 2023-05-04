@@ -27,6 +27,8 @@ import UseReducers5 from "./UseReducers/UseReducers5";
 import FetchApiUseReducer from "./UseReducers/FetchApiUseReducer";
 import UseRef from "./UseRef/UseRef";
 import CustomHook from "./CustomHook/CustomHook";
+import UseMemo from "./UseMemo/useMemo";
+import UseCallbackParent from "./UseCallback/useCallbackParent";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -53,6 +55,8 @@ function App() {
     "useReducer with useContext",
     "UseRef",
     "Custome Hook",
+    "useMemo Hook",
+    "useCallBack Hook",
   ];
 
   const PRODUCTS = [
@@ -132,6 +136,10 @@ function App() {
         return <UseRef />;
       case "Custome Hook":
         return <CustomHook />;
+      case "useMemo Hook":
+        return <UseMemo />;
+      case "useCallBack Hook":
+        return <UseCallbackParent />;
       default:
         break;
     }
