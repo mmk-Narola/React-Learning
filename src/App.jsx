@@ -29,6 +29,9 @@ import UseRef from "./UseRef/UseRef";
 import CustomHook from "./CustomHook/CustomHook";
 import UseMemo from "./UseMemo/useMemo";
 import UseCallbackParent from "./UseCallback/useCallbackParent";
+import NishaUseReducers from "./NishaSinglaUseReducers/NishaUseReducers";
+import CrudUseReducers from "./UseReducers/CRUD/CrudUseReducers";
+import MainPage from "./SimpleShopDemo/MainPage";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -57,6 +60,9 @@ function App() {
     "Custome Hook",
     "useMemo Hook",
     "useCallBack Hook",
+    "Nisha Singla useRuducers",
+    "CRUD with useReducers",
+    "ShopCartDemo",
   ];
 
   const PRODUCTS = [
@@ -140,6 +146,12 @@ function App() {
         return <UseMemo />;
       case "useCallBack Hook":
         return <UseCallbackParent />;
+      case "Nisha Singla useRuducers":
+        return <NishaUseReducers />;
+      case "CRUD with useReducers":
+        return <CrudUseReducers />;
+      case "ShopCartDemo":
+        return <MainPage />;
       default:
         break;
     }

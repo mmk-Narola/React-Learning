@@ -1,4 +1,7 @@
-import { useReducer } from "react";
+import React, { useReducer } from "react";
+import Cart from "./Cart";
+
+export const CartContext = React.createContext();
 
 function reducer(state, action) {
   switch (action.type) {
@@ -43,7 +46,7 @@ function reducer(state, action) {
   }
 }
 
-export default function UseReducers5() {
+export default function MainPage() {
   const [state, dispatch] = useReducer(reducer, { items: [] });
 
   function handleAddItem() {
@@ -66,21 +69,30 @@ export default function UseReducers5() {
   function handleDecrementQuantity(id) {
     dispatch({ type: "DECREMENT_QUANTITY", payload: id });
   }
-
+  console.log(state);
   return (
-    <div className="profile">
-      <h2>Use Reducers Example - 4 with Cart item useReducer</h2>
-      <button onClick={handleAddItem}>Add Item</button>
-      <ul>
-        {state.items.map((item) => (
-          <li key={item.id}>
-            {item.name} ({item.quantity})
-            <button onClick={() => handleIncrementQuantity(item.id)}>+</button>
-            <button onClick={() => handleDecrementQuantity(item.id)}>-</button>
-            <button onClick={() => handleRemoveItem(item.id)}>x</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <CartContext.Provider value={{ cartItem: state?.items?.length }}>
+      <div className="profile">
+        <Cart />
+        <h2>Use Reducers Shop Cart item </h2>
+        <button onClick={handleAddItem}>Add Item</button>
+        <ul>
+          {state.items.map((item) => (
+            <li key={item.id}>
+              {item.name} ({item.quantity})
+              <button onClick={() => handleIncrementQuantity(item.id)}>
+                +
+              </button>
+              <button onClick={() => handleDecrementQuantity(item.id)}>
+                -
+              </button>
+              <button onClick={() => handleRemoveItem(item.id)}>x</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </CartContext.Provider>
   );
 }
+
+// MainPage
