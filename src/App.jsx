@@ -32,6 +32,7 @@ import UseCallbackParent from "./UseCallback/useCallbackParent";
 import NishaUseReducers from "./NishaSinglaUseReducers/NishaUseReducers";
 import CrudUseReducers from "./UseReducers/CRUD/CrudUseReducers";
 import MainPage from "./SimpleShopDemo/MainPage";
+import FormValidation from "./React-Fom-Validation/FormValidation";
 
 function App() {
   const [value, setValue] = useState("Props");
@@ -63,6 +64,7 @@ function App() {
     "Nisha Singla useRuducers",
     "CRUD with useReducers",
     "ShopCartDemo",
+    "React Form Validation",
   ];
 
   const PRODUCTS = [
@@ -152,6 +154,8 @@ function App() {
         return <CrudUseReducers />;
       case "ShopCartDemo":
         return <MainPage />;
+      case "React Form Validation":
+        return <FormValidation />;
       default:
         break;
     }
