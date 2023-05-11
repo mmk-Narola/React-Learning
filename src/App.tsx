@@ -7,6 +7,7 @@ import { Button } from "./components/EventProps/Button";
 import UseState from "./components/State&Hook/UseState";
 import UseReducers from "./components/State&Hook/UseReducers";
 import UseContext from "./components/Context/UseContext";
+import UseRef from "./components/UseRef/UseRef";
 
 function App() {
   const [topic, setTopic] = useState("simpleType");
@@ -20,6 +21,7 @@ function App() {
     "useStateHook",
     "useReducersHook",
     "UseContext",
+    "UseRef",
   ];
 
   const personObj = {
@@ -75,6 +77,8 @@ function App() {
         return <UseReducers />;
       case "UseContext":
         return <UseContext />;
+      case "UseRef":
+        return <UseRef />;
       default:
         break;
     }
