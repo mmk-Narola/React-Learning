@@ -8,6 +8,7 @@ import UseState from "./components/State&Hook/UseState";
 import UseReducers from "./components/State&Hook/UseReducers";
 import UseContext from "./components/Context/UseContext";
 import UseRef from "./components/UseRef/UseRef";
+import MainTodo from "./components/TodoWithTypeScript/MainTodo";
 
 function App() {
   const [topic, setTopic] = useState("simpleType");
@@ -22,6 +23,7 @@ function App() {
     "useReducersHook",
     "UseContext",
     "UseRef",
+    "Todo-TypeScript",
   ];
 
   const personObj = {
@@ -79,6 +81,8 @@ function App() {
         return <UseContext />;
       case "UseRef":
         return <UseRef />;
+      case "Todo-TypeScript":
+        return <MainTodo />;
       default:
         break;
     }
